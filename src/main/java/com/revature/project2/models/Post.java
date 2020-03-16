@@ -34,6 +34,8 @@ public class Post implements Serializable {
 	private String image_link_one;
 	private String image_link_two;
 	private String image_link_three;
+	private String latitude;
+	private String longitude;
 	
 	@ManyToOne
 	@JoinColumn(name="creator_id")
@@ -123,6 +125,22 @@ public class Post implements Serializable {
 		this.image_link_three = image_link_three;
 	}
 
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
 	public User getCreator() {
 		return creator;
 	}
@@ -150,6 +168,8 @@ public class Post implements Serializable {
 		result = prime * result + ((image_link_three == null) ? 0 : image_link_three.hashCode());
 		result = prime * result + ((image_link_two == null) ? 0 : image_link_two.hashCode());
 		result = prime * result + ((interestedCustomers == null) ? 0 : interestedCustomers.hashCode());
+		result = prime * result + ((latitude == null) ? 0 : latitude.hashCode());
+		result = prime * result + ((longitude == null) ? 0 : longitude.hashCode());
 		result = prime * result + post_id;
 		result = prime * result + ((rent == null) ? 0 : rent.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -201,6 +221,16 @@ public class Post implements Serializable {
 				return false;
 		} else if (!interestedCustomers.equals(other.interestedCustomers))
 			return false;
+		if (latitude == null) {
+			if (other.latitude != null)
+				return false;
+		} else if (!latitude.equals(other.latitude))
+			return false;
+		if (longitude == null) {
+			if (other.longitude != null)
+				return false;
+		} else if (!longitude.equals(other.longitude))
+			return false;
 		if (post_id != other.post_id)
 			return false;
 		if (rent == null) {
@@ -225,8 +255,9 @@ public class Post implements Serializable {
 	public String toString() {
 		return "Post [post_id=" + post_id + ", title=" + title + ", rent=" + rent + ", address=" + address
 				+ ", zipcode=" + zipcode + ", description=" + description + ", image_link_one=" + image_link_one
-				+ ", image_link_two=" + image_link_two + ", image_link_three=" + image_link_three + ", creator="
-				+ creator + ", interestedCustomers=" + interestedCustomers + "]";
+				+ ", image_link_two=" + image_link_two + ", image_link_three=" + image_link_three + ", latitude="
+				+ latitude + ", longitude=" + longitude + ", creator=" + creator + ", interestedCustomers="
+				+ interestedCustomers + "]";
 	}
 
 }
