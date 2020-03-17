@@ -1,5 +1,7 @@
 package com.revature.project2.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class PostService {
 	
 	public int createPost(Post p) {
 		return postDao.CreatePost(p);
+	}
+	
+	public List<Post> getPostsByZipcode(String zipcode) {
+		return postDao.getPostsByZipcode(zipcode);
 	}
 }
