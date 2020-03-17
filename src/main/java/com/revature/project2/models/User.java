@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -34,9 +33,6 @@ public class User implements Serializable {
 	private String phone;
 	private String pass;
 	private String gender;
-	
-	@OneToMany(mappedBy="creator", fetch=FetchType.EAGER)
-	private List<Post> createdPosts = new ArrayList<>();
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
@@ -106,14 +102,6 @@ public class User implements Serializable {
 		this.gender = gender;
 	}
 
-	public List<Post> getCreatedPosts() {
-		return createdPosts;
-	}
-
-	public void setCreatedPosts(List<Post> createdPosts) {
-		this.createdPosts = createdPosts;
-	}
-
 	public List<Post> getBookmarkedPosts() {
 		return bookmarkedPosts;
 	}
@@ -127,7 +115,6 @@ public class User implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((bookmarkedPosts == null) ? 0 : bookmarkedPosts.hashCode());
-		result = prime * result + ((createdPosts == null) ? 0 : createdPosts.hashCode());
 		result = prime * result + customer_id;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((first_name == null) ? 0 : first_name.hashCode());
@@ -151,11 +138,6 @@ public class User implements Serializable {
 			if (other.bookmarkedPosts != null)
 				return false;
 		} else if (!bookmarkedPosts.equals(other.bookmarkedPosts))
-			return false;
-		if (createdPosts == null) {
-			if (other.createdPosts != null)
-				return false;
-		} else if (!createdPosts.equals(other.createdPosts))
 			return false;
 		if (customer_id != other.customer_id)
 			return false;
@@ -195,8 +177,8 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [customer_id=" + customer_id + ", first_name=" + first_name + ", last_name=" + last_name
-				+ ", email=" + email + ", phone=" + phone + ", pass=" + pass + ", gender=" + gender + ", createdPosts="
-				+ createdPosts + ", bookmarkedPosts=" + bookmarkedPosts + "]";
+				+ ", email=" + email + ", phone=" + phone + ", pass=" + pass + ", gender=" + gender
+				+ ", bookmarkedPosts=" + bookmarkedPosts + "]";
 	}
 
 }
