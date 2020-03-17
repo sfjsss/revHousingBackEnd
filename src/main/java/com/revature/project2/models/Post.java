@@ -50,6 +50,23 @@ public class Post implements Serializable {
 	public Post() {
 		super();
 	}
+	
+	
+
+	public Post(String title, String rent, String address, String zipcode, String description,
+			String image_link_one, String image_link_two, String image_link_three) {
+		super();
+		this.title = title;
+		this.rent = rent;
+		this.address = address;
+		this.zipcode = zipcode;
+		this.description = description;
+		this.image_link_one = image_link_one;
+		this.image_link_two = image_link_two;
+		this.image_link_three = image_link_three;
+	}
+
+
 
 	public int getPost_id() {
 		return post_id;

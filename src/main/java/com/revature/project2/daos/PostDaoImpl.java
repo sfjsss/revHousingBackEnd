@@ -6,20 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.project2.models.User;
+import com.revature.project2.models.Post;
 
 @Repository
-public class UserDaoImpl implements UserDao {
+public class PostDaoImpl implements PostDao{
 	
 	@Autowired
 	private SessionFactory sf;
 	
 	@Transactional
 	@Override
-	public int createUser(User u) {
+	public Post getPost(int id) {
 		Session s = sf.getCurrentSession();
-		int result = (int) s.save(u);
-		return result;
+		return (Post) s.get(Post.class, id);
 	}
 	
+	@Transactional
+	@Override
+	public int createPost(Post p) {
+		Session s = sf.getCurrentSession();
+		return (int) s.save(p);
+	}
+
 }
