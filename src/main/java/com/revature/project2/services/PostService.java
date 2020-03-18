@@ -21,4 +21,8 @@ public class PostService {
 	public List<Post> getPostsByZipcode(String zipcode) {
 		return postDao.getPostsByZipcode(zipcode);
 	}
+	
+	public Post getPostById(int id) {
+		return postDao.getPostById(id);
+	}
 }

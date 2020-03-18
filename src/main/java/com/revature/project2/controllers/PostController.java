@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,5 +39,11 @@ public class PostController {
 	public ResponseEntity<List<Post>> getPostsByZipcode(@RequestParam("zipcode") String zipcode) {
 		List<Post> posts = postService.getPostsByZipcode(zipcode);
 		return new ResponseEntity<>(posts, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Post> getPostById(@PathVariable("id") int id) {
+		Post post = postService.getPostById(id);
+		return new ResponseEntity<>(post, HttpStatus.OK);
 	}
 }

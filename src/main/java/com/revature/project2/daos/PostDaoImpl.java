@@ -36,4 +36,13 @@ public class PostDaoImpl implements PostDao {
 		return posts;
 	}
 
+	@Transactional
+	@Override
+	public Post getPostById(int id) {
+		Session s = sf.getCurrentSession();
+		return s.get(Post.class, id);
+	}
+	
+	
+
 }

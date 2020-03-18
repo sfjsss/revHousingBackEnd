@@ -8,4 +8,5 @@ public interface PostDao {
 
 	public int CreatePost(Post p);
 	public List<Post> getPostsByZipcode(String zipcode);
+	public Post getPostById(int id);
 }
