@@ -25,4 +25,8 @@ public class PostService {
 	public Post getPostById(int id) {
 		return postDao.getPostById(id);
 	}
+	
+	public void bookmarkPostById(int userId, int postId) {
+		postDao.bookmarkPostById(userId, postId);
+	}
 }

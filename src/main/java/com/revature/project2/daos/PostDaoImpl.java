@@ -42,6 +42,18 @@ public class PostDaoImpl implements PostDao {
 		Session s = sf.getCurrentSession();
 		return s.get(Post.class, id);
 	}
+
+	@SuppressWarnings("rawtypes")
+	@Transactional
+	@Override
+	public void bookmarkPostById(int userId, int postId) {
+		Session s = sf.getCurrentSession();
+		String sql = "insert into bookmarked_posts (customer_id, post_id) values (?, ?)";
+		Query q = s.createNativeQuery(sql);
+		q.setParameter(1, userId);
+		q.setParameter(2, postId);
+		q.executeUpdate();
+	}
 	
 	
 
