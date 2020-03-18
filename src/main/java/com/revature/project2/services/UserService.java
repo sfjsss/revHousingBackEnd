@@ -15,4 +15,8 @@ public class UserService {
 	public int createUser(User u) {
 		return ud.createUser(u);
 	}
+	
+	public User updateUser(User u) {
+		return ud.updateUser(u);
+	}
 }

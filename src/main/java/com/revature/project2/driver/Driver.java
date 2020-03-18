@@ -13,7 +13,7 @@ public class Driver {
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		PostService ps = (PostService) ac.getBean("postService");
-//        UserService us = (UserService) ac.getBean("userService");
+//        UserService us = (UserService) ac.getBean("userService");  
 //		
 //		User u = new User();
 //		u.setFirst_name("tianyu");
@@ -22,10 +22,10 @@ public class Driver {
 //		u.setPhone("6268237713");
 //		u.setPass("password");
 //		u.setGender("male");
-		Post p = ps.getPost(1);
+//		Post p = ps.getPost(1);
 		
-//		Post p = new Post("Liv+", "2000", "1001 South st", "76001", "Coronavirus place, but lovely place though", "www.pic.com", "www.pic.com", "www.pic.com");
-//		int pk = ps.createPost(p);
+		Post p = new Post("Dallas Cowboys", "5000", "1234 South st", "76001", "Worst stadium", "www.pic.com", "www.pic.com", "www.pic.com");
+		int pk = ps.createPost(p);
 //		int result = us.createUser(u);
 //		System.out.println(result);
 //		System.out.println(pk);

@@ -22,4 +22,12 @@ public class UserDaoImpl implements UserDao {
 		return result;
 	}
 	
+	@Transactional
+	@Override
+	public User updateUser(User u) {
+		Session s = sf.getCurrentSession();
+		User updatedUser = (User) s.merge(u);
+		return updatedUser;
+	}
+	
 }
