@@ -15,4 +15,12 @@ public class UserService {
 	public int createUser(User u) {
 		return ud.createUser(u);
 	}
+	
+	public User getUserById(int id) {
+		return ud.getUserById(id);
+	}
+	
+	public void updateUser(User u) {
+		ud.updateUser(u);
+	}
 }
