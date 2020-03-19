@@ -1,5 +1,6 @@
 package com.revature.project2.services;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,11 @@ public class UserService {
 	private UserDao ud;
 	
 	public int createUser(User u) {
+		if (ud.checkEmailExist(u.getEmail())) {
+			return 0;
+		}
+		String hashedPW = BCrypt.hashpw(u.getPass(), BCrypt.gensalt());
+		u.setPass(hashedPW);
 		return ud.createUser(u);
 	}
 	
