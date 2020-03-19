@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,6 +55,12 @@ public class PostController {
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 	
+	@GetMapping("/interest")
+	public ResponseEntity<Object> interestPostById(@RequestParam("userId") int userId, @RequestParam("postId") int postId) {
+		postService.interestPostById(userId, postId);
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+	
 	@GetMapping("/user/{id}")
 	public ResponseEntity<List<Post>> getPostsByUserId(@PathVariable("id") int userId) {
 		List<Post> posts = postService.getPostsByUserId(userId);
@@ -69,6 +76,12 @@ public class PostController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deletePostByUserId(@PathVariable("id") int id) {
 		postService.deletePostById(id);
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+	
+	@PutMapping
+	public ResponseEntity<Object> updatePost(@RequestBody Post p) {
+		postService.updatePost(p);
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 	

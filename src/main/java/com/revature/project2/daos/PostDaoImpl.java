@@ -87,6 +87,25 @@ public class PostDaoImpl implements PostDao {
 		q.setParameter(1, id);
 		q.executeUpdate();
 	}
+
+	@Transactional
+	@Override
+	public void updatePost(Post p) {
+		Session s = sf.getCurrentSession();
+		s.update(p);
+	}
+
+	@Transactional
+	@SuppressWarnings("rawtypes")
+	@Override
+	public void interestPostById(int userId, int postId) {
+		Session s = sf.getCurrentSession();
+		String sql = "insert into interested_posts (customer_id, post_id) values (?, ?)";
+		Query q = s.createNativeQuery(sql);
+		q.setParameter(1, userId);
+		q.setParameter(2, postId);
+		q.executeUpdate();
+	}
 	
 	
 
