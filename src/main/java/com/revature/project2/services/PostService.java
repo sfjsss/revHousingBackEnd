@@ -37,4 +37,8 @@ public class PostService {
 	public List<Post> getPostsByUserId(int id) {
 		return postDao.getPostsByUserId(id);
 	}
+	
+	public void deletePostById(int id) {
+		postDao.deletePostById(id);
+	}
 }

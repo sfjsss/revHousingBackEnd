@@ -12,4 +12,5 @@ public interface PostDao {
 	public void bookmarkPostById(int userId, int postId);
 	public void unBookmarkPostById(int userId, int postId);
 	public List<Post> getPostsByUserId(int id);
+	public void deletePostById(int id);
 }

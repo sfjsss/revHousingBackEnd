@@ -77,6 +77,16 @@ public class PostDaoImpl implements PostDao {
 		List<Post> posts = q.list();
 		return posts;
 	}
+
+	@Transactional
+	@Override
+	public void deletePostById(int id) {
+		Session s = sf.getCurrentSession();
+		String sql = "delete from post where post_id = ?";
+		Query<Post> q = s.createNativeQuery(sql, Post.class);
+		q.setParameter(1, id);
+		q.executeUpdate();
+	}
 	
 	
 
