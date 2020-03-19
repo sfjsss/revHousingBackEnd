@@ -107,6 +107,18 @@ public class PostDaoImpl implements PostDao {
 		q.executeUpdate();
 	}
 	
+	@SuppressWarnings("rawtypes")
+	@Transactional
+	@Override
+	public void unInterestPostById(int userId, int postId) {
+		Session s = sf.getCurrentSession();
+		String sql = "delete from interested_posts where customer_id = ? and post_id = ?";
+		Query q = s.createNativeQuery(sql);
+		q.setParameter(1, userId);
+		q.setParameter(2, postId);
+		q.executeUpdate();
+	}
+	
 	
 
 }

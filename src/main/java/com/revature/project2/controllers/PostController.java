@@ -61,6 +61,12 @@ public class PostController {
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 	
+	@GetMapping("/uninterest")
+	public ResponseEntity<Object> uninterestPostById(@RequestParam("userId") int userId, @RequestParam("postId") int postId) {
+		postService.unInterestPostById(userId, postId);
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+	
 	@GetMapping("/user/{id}")
 	public ResponseEntity<List<Post>> getPostsByUserId(@PathVariable("id") int userId) {
 		List<Post> posts = postService.getPostsByUserId(userId);

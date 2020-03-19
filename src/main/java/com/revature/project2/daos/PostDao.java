@@ -15,4 +15,5 @@ public interface PostDao {
 	public void deletePostById(int id);
 	public void updatePost(Post p);
 	public void interestPostById(int userId, int postId);
+	public void unInterestPostById(int userId, int postId);
 }
