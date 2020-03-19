@@ -22,4 +22,11 @@ public class UserDaoImpl implements UserDao {
 		return result;
 	}
 
+	@Transactional
+	@Override
+	public User getUserById(int id) {
+		Session s = sf.getCurrentSession();
+		return s.get(User.class, id);
+	}
+
 }
