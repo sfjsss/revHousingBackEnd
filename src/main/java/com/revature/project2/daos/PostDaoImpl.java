@@ -54,6 +54,18 @@ public class PostDaoImpl implements PostDao {
 		q.setParameter(2, postId);
 		q.executeUpdate();
 	}
+
+	@SuppressWarnings("rawtypes")
+	@Transactional
+	@Override
+	public void unBookmarkPostById(int userId, int postId) {
+		Session s = sf.getCurrentSession();
+		String sql = "delete from bookmarked_posts where customer_id = ? and post_id = ?";
+		Query q = s.createNativeQuery(sql);
+		q.setParameter(1, userId);
+		q.setParameter(2, postId);
+		q.executeUpdate();
+	}
 	
 	
 

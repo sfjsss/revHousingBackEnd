@@ -42,9 +42,15 @@ public class PostController {
 	}
 	
 	@GetMapping("/bookmark")
-	public ResponseEntity<String> bookmarkPostById(@RequestParam("userId") String userId, @RequestParam("postId") String postId) {
+	public ResponseEntity<Object> bookmarkPostById(@RequestParam("userId") String userId, @RequestParam("postId") String postId) {
 		postService.bookmarkPostById(Integer.parseInt(userId), Integer.parseInt(postId));
-		return new ResponseEntity<>("bookmarked a post", HttpStatus.OK);
+		return new ResponseEntity<>(null, HttpStatus.OK);
+	}
+	
+	@GetMapping("/unbookmark")
+	public ResponseEntity<Object> unBookmarkPostById(@RequestParam("userId") String userId, @RequestParam("postId") String postId) {
+		postService.unBookMarkPostById(Integer.parseInt(userId), Integer.parseInt(postId));
+		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")

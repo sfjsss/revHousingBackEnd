@@ -10,4 +10,5 @@ public interface PostDao {
 	public List<Post> getPostsByZipcode(String zipcode);
 	public Post getPostById(int id);
 	public void bookmarkPostById(int userId, int postId);
+	public void unBookmarkPostById(int userId, int postId);
 }

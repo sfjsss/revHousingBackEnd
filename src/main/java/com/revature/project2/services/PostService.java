@@ -29,4 +29,8 @@ public class PostService {
 	public void bookmarkPostById(int userId, int postId) {
 		postDao.bookmarkPostById(userId, postId);
 	}
+	
+	public void unBookMarkPostById(int userId, int postId) {
+		postDao.unBookmarkPostById(userId, postId);
+	}
 }
