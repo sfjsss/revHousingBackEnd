@@ -29,4 +29,11 @@ public class UserDaoImpl implements UserDao {
 		return s.get(User.class, id);
 	}
 
+	@Transactional
+	@Override
+	public void updateUser(User u) {
+		Session s = sf.getCurrentSession();
+		s.update(u);
+	}
+
 }
