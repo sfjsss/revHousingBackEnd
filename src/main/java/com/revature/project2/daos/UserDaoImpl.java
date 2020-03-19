@@ -41,16 +41,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Transactional
 	@Override
-	public boolean checkEmailExist(String email) {
+	public List<User> checkEmailExist(String email) {
 		Session s = sf.getCurrentSession();
 		String sql = "select * from customer where email = ?";
 		Query<User> q = s.createNativeQuery(sql, User.class);
 		q.setParameter(1, email);
 		List<User> users = q.list();
-		if (users.size() > 0) {
-			return true;
-		}
-		return false;
+		return users;
 	}
 
 }

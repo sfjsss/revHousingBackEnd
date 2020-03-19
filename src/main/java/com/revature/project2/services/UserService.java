@@ -1,5 +1,7 @@
 package com.revature.project2.services;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +16,7 @@ public class UserService {
 	private UserDao ud;
 	
 	public int createUser(User u) {
-		if (ud.checkEmailExist(u.getEmail())) {
+		if (ud.checkEmailExist(u.getEmail()).size() > 0) {
 			return 0;
 		}
 		String hashedPW = BCrypt.hashpw(u.getPass(), BCrypt.gensalt());
@@ -28,5 +30,17 @@ public class UserService {
 	
 	public void updateUser(User u) {
 		ud.updateUser(u);
+	}
+	
+	public int authenticateUser(User u) {
+		List<User> users = ud.checkEmailExist(u.getEmail());
+		if (users.size() < 1) {
+			return 0;
+		}
+		User trueUser = users.get(0);
+		if (BCrypt.checkpw(u.getPass(), trueUser.getPass())) {
+			return trueUser.getCustomer_id();
+		}
+		return 0;
 	}
 }

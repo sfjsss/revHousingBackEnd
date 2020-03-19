@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,12 +32,6 @@ public class UserController {
 	public ResponseEntity<String> updateUser(@RequestBody User u) {
 		us.updateUser(u);
 		return new ResponseEntity<>("updated user", HttpStatus.OK);
-	}
-	
-	@PostMapping
-	public ResponseEntity<Integer> registerUser(@RequestBody User u) {
-		Integer result = us.createUser(u);
-		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 	
 }
