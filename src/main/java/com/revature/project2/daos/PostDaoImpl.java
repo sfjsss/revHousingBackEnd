@@ -66,6 +66,17 @@ public class PostDaoImpl implements PostDao {
 		q.setParameter(2, postId);
 		q.executeUpdate();
 	}
+
+	@Transactional
+	@Override
+	public List<Post> getPostsByUserId(int id) {
+		Session s = sf.getCurrentSession();
+		String sql = "select * from post where creator_id = ?";
+		Query<Post> q = s.createNativeQuery(sql, Post.class);
+		q.setParameter(1, id);
+		List<Post> posts = q.list();
+		return posts;
+	}
 	
 	
 

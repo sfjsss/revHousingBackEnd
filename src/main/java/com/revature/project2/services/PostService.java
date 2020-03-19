@@ -33,4 +33,8 @@ public class PostService {
 	public void unBookMarkPostById(int userId, int postId) {
 		postDao.unBookmarkPostById(userId, postId);
 	}
+	
+	public List<Post> getPostsByUserId(int id) {
+		return postDao.getPostsByUserId(id);
+	}
 }
