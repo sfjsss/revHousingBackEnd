@@ -20,7 +20,7 @@ public class Driver {
 		u.setPass("password");
 		u.setGender("male");
 		
-		int result = us.createUser(u);
+		User result = us.createUser(u);
 		System.out.println(result);
 	}
 }
