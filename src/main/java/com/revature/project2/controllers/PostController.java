@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.project2.models.Post;
-import com.revature.project2.models.User;
 import com.revature.project2.services.PostService;
 
 @RestController
@@ -30,9 +29,6 @@ public class PostController {
 	
 	@PostMapping
 	public ResponseEntity<Integer> createPost(@RequestBody Post post) {		
-		User user = new User();
-		user.setCustomer_id(2);
-		post.setCreator(user);
 		int postId = postService.createPost(post);
 		return new ResponseEntity<>(postId, HttpStatus.CREATED);
 	}
