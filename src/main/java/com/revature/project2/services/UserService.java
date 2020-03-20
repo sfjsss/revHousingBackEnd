@@ -29,6 +29,11 @@ public class UserService {
 	}
 	
 	public void updateUser(User u) {
+		User trueUser = ud.getUserById(u.getCustomer_id());
+		if (!u.getPass().equals(trueUser.getPass())) {
+			String hasedPW = BCrypt.hashpw(u.getPass(), BCrypt.gensalt());
+			u.setPass(hasedPW);
+		} 
 		ud.updateUser(u);
 	}
 	

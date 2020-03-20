@@ -30,7 +30,7 @@ public class PostDaoImpl implements PostDao {
 		Session s = sf.getCurrentSession();
 		String sql = "select * from post where zipcode like ?";
 		Query<Post> q = s.createNativeQuery(sql, Post.class);
-		String zipcodePattern = zipcode.substring(0, 3) + "%";
+		String zipcodePattern = zipcode.substring(0, 2) + "%";
 		q.setParameter(1, zipcodePattern);
 		List<Post> posts = q.list();
 		return posts;
@@ -78,10 +78,22 @@ public class PostDaoImpl implements PostDao {
 		return posts;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Transactional
 	@Override
 	public void deletePostById(int id) {
 		Session s = sf.getCurrentSession();
+		
+		String sql0 = "delete from interested_posts where post_id = ?";
+		Query q0 = s.createNativeQuery(sql0);
+		q0.setParameter(1, id);
+		q0.executeUpdate();
+		
+		String sql1 = "delete from bookmarked_posts where post_id = ?";
+		Query q1 = s.createNativeQuery(sql1);
+		q1.setParameter(1, id);
+		q1.executeUpdate();
+		
 		String sql = "delete from post where post_id = ?";
 		Query<Post> q = s.createNativeQuery(sql, Post.class);
 		q.setParameter(1, id);
