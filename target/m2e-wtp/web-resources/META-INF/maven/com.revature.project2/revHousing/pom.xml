@@ -4,6 +4,9 @@
   <artifactId>revHousing</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  <build>
+  	<finalName>/</finalName>
+  </build>
   <name>revHousing</name>
   <description>project 2</description>
   
