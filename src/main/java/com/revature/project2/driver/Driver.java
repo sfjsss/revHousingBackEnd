@@ -12,15 +12,16 @@ public class Driver {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
 		UserService us = (UserService) ac.getBean("userService");
 		
-		User u = new User();
-		u.setFirst_name("tianyu");
-		u.setLast_name("li");
-		u.setEmail("alandron06281990@gmail.com");
-		u.setPhone("6268237713");
-		u.setPass("password");
-		u.setGender("male");
+//		User u = new User();
+//		u.setFirst_name("tianyu");
+//		u.setLast_name("li");
+//		u.setEmail("alandron06281990@gmail.com");
+//		u.setPhone("6268237713");
+//		u.setPass("password");
+//		u.setGender("male");
 		
-		int result = us.createUser(u);
-		System.out.println(result);
+//		int result = us.createUser(u);
+		User u = us.getUserByEmail("jamesharden@gmail.com");
+		System.out.println(u);
 	}
 }

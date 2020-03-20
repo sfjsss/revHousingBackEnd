@@ -15,9 +15,9 @@
 	<tx:annotation-driven/>
 	
 	<bean id="ourDataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="url" value="jdbc:postgresql://revhousing.cfg90h8rgzcc.us-west-2.rds.amazonaws.com:5432/postgres"></property>
-		<property name="username" value="revhousing"></property>
-		<property name="password" value="revature"></property>
+		<property name="url" value="jdbc:postgresql://java-2002.clj6ypshvjya.us-east-2.rds.amazonaws.com:5432/postgres"></property>
+		<property name="username" value="postgres"></property>
+		<property name="password" value="p4ssw0rd"></property>
 		<property name="driverClassName" value="org.postgresql.Driver"></property>
 	</bean>
 	
@@ -28,7 +28,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>

@@ -23,4 +23,8 @@ public class UserService {
 	public void updateUser(User u) {
 		ud.updateUser(u);
 	}
+	
+	public User getUserByEmail(String e) {
+		return ud.getUserByEmail(e);
+	}
 }

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,12 @@ public class UserController {
 	@Autowired
 	private UserService us;
 
+	@PostMapping
+	public ResponseEntity<Integer> createUser(@RequestBody User u) {
+		int userId = us.createUser(u);
+		return new ResponseEntity<>(userId, HttpStatus.CREATED);
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUserById(@PathVariable("id") int id) {
 		User user = us.getUserById(id);

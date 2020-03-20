@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -91,7 +92,8 @@ public class User implements Serializable {
 	}
 
 	public void setPass(String pass) {
-		this.pass = pass;
+		String encryptPass = BCrypt.hashpw(pass, BCrypt.gensalt());
+		this.pass = encryptPass;
 	}
 
 	public String getGender() {
