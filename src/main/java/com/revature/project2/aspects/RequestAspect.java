@@ -2,9 +2,11 @@ package com.revature.project2.aspects;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,14 @@ public class RequestAspect {
 	
 	@Autowired
 	UserDao ud;
+	
+	Logger log = Logger.getRootLogger();
+	
+	@Before("within(com.revature.project2.controllers.*)")
+	public void logRequests() {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+		log.info(request.getMethod() + " request made to: " + request.getRequestURI());
+	}
 
 	@Around("within(com.revature.project2.controllers.*)")
 	public Object authorizeRequest(ProceedingJoinPoint jp) throws Throwable {
